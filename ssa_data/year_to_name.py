@@ -20,18 +20,20 @@ for year in range(year_start, year_end):
 
             known_names[(name, sex)][year] = count
 
-# create new files, one for each name
-for name_data in known_names:
+# with open("test.txt", "w") as file:
 
-    name, sex = name_data
-    year_data = known_names[name_data]
+#     # create new files, one for each name
+#     for name_data in known_names:
 
-    with open("by_name/" + name + "_" + sex + ".txt", "w") as file:
+#         name, sex = name_data
+#         year_data = known_names[name_data]
 
-        for year in year_data:
+#         # with open("by_name/" + name + "_" + sex + ".txt", "w") as file:
 
-            count = year_data[year]
+#         for year in year_data:
 
-            file.write(year + ", ", count)
+#             count = year_data[year]
+
+#             file.write(str(year) + ": " + str(count) + "\n")
     
-print("done")
+# print("done")
