@@ -30,39 +30,25 @@ def parse_raw_data(year_start, year_end):
 
 import json
 
-# create a single text file of all the names that can be found in the data
+# create a single JSON file containing all the name data
+# each name is an object in the overall array
 def create_file_of_names(known_names):
     
-    with open("names.json", "w") as file:
+    # restructure Python data to convert to a JSON object
+    # tuples can't be used as keys in JSON
+    modified_name_data = [0] * len(known_names.keys())
 
-        for name_data in known_names:
+    for i, name_data in enumerate(known_names):
         
-            # restructure Python data to convert to a JSON object
-            # tuples can't be used as keys in JSON
-            name, sex = name_data
-            year_data = known_names[name_data]
+        name, sex = name_data
+        year_data = known_names[name_data]
 
-            data = {name + "_" + sex: year_data}
+        modified_name_data[i] = {name + "_" + sex: year_data}
 
-            file.write(json.dumps(data))
+    with open("names.json", "w") as file:
+        file.write(json.dumps(modified_name_data))
 
 known_names = parse_raw_data(year_start, year_end)
 create_file_of_names(known_names)
 
-# with open("test.txt", "w") as file:
-
-#     # create new files, one for each name
-#     for name_data in known_names:
-
-#         name, sex = name_data
-#         year_data = known_names[name_data]
-
-#         # with open("by_name/" + name + "_" + sex + ".txt", "w") as file:
-
-#         for year in year_data:
-
-#             birth = year_data[year]
-
-#             file.write(str(year) + ": " + str(birth) + "\n")
-    
 print("done")
