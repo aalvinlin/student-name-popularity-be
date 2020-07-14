@@ -3,6 +3,7 @@ exports.up = function(knex) {
     return knex.schema
         .createTable("sexes", table => {
 
+            // specified in seeds: 0 will represent "M" and 1 will represent "F"
             table.increments("sex_id");
 
             table.string("sex", 32)
