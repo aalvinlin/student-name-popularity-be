@@ -11,7 +11,7 @@ def parse_raw_data(year_start, year_end):
     # parse each file from the original data
     for year in range(year_start, year_end):
 
-        with open("by_year/yob" + str(year) + ".txt") as file:
+        with open("raw/yob" + str(year) + ".txt") as file:
 
             for line in file.readlines():
 
